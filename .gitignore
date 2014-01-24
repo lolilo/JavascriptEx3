@@ -1,4 +1,5 @@
 env/
 
 *.pyc
-.DS_Storedatabase.db
+.DS_Store
+database.db
