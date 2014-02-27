@@ -1,20 +1,38 @@
-from flask import Flask
-import dataset
+from flask import Flask, render_template, request, redirect, flash
 from flask.ext import restful
-from flask.ext.restful import reqparse, abort, Api, Resource
+from flask.ext.restful import reqparse, Api, Resource
 import json
+import dataset
 
 app = Flask(__name__)
+app.secret_key = "Shhhhh!! Something Secret"
+db = dataset.connect('sqlite:///database.db')
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/', methods=['POST'])
+def index_post():
+	todo_lists = db['todo_lists']
+	list_name = request.form.get('todo_list_name')
+
+	if not list_name:
+		flash("I'm sorry, but you'll need to specify a list name")
+
+	else:
+		todo_lists.insert(dict(list_name=list_name))
+
+		flash('Todo list %s created' % list_name)
+
+	return redirect('/')
+
+# flask-restful api code
 api = restful.Api(app)
 
 parser = reqparse.RequestParser()
 parser.add_argument('id', type=int)
 parser.add_argument('list_name', type=str)
-db = dataset.connect('sqlite:///database.db')
-
-@app.route('/')
-def index():
-	return "Hello World"
 
 class TodoList(restful.Resource):
 

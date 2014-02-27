@@ -5,7 +5,33 @@
 
     <body>
         <div class="container">
-            <p> TODO: Put a todo app here! </p>
+            <div class="flash-messages">
+                {% for message in get_flashed_messages() %}
+                    {{ message}}
+                {% endfor %}
+            </div>
+            <div id="todo-list">
+                <div class="todo-list-item">
+                    <input id="item1" type="checkbox"></input>
+                    <label for="item1"> Todo</label>                    
+                </div>
+
+                <div class="todo-list-item">
+                    <input id="item2" type="checkbox"></input>
+                    <label for="item2"> Programming Languages </label>                    
+                </div>
+
+                <div class="todo-list-item">
+                    <input id="item3" type="checkbox"></input>
+                    <label for="item3"> Harry Potter Houses </label>                    
+                </div>
+
+                <form method="POST">
+                    <input type="text" name="todo_list_name"></input>
+                    <input type="submit" value="Create new list"></input>
+                </form>
+
+            </div>
         </div>
 
         <script src="/static/js/jquery-2.1.0.js"></script>
