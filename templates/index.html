@@ -11,20 +11,13 @@
                 {% endfor %}
             </div>
             <div id="todo-list">
-                <div class="todo-list-item">
-                    <input id="item1" type="checkbox"></input>
-                    <label for="item1"> Todo</label>                    
-                </div>
 
-                <div class="todo-list-item">
-                    <input id="item2" type="checkbox"></input>
-                    <label for="item2"> Programming Languages </label>                    
-                </div>
-
-                <div class="todo-list-item">
-                    <input id="item3" type="checkbox"></input>
-                    <label for="item3"> Harry Potter Houses </label>                    
-                </div>
+                {% for list in lists %}
+                    <div class="todo-list-item">
+                        <input id="item{{list.id}}" type="checkbox"></input>
+                        <label for="item{{list.id}}"> {{list.list_name}}</label>                    
+                    </div>
+                {% endfor %}
 
                 <form method="POST">
                     <input type="text" name="todo_list_name"></input>
