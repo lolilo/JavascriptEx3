@@ -5,22 +5,25 @@
 
     <body>
         <div class="container">
-            <h2> Lists </h2>
+            <h2> Things to do </h2>
             <div class="flash-messages">
                 {% for message in get_flashed_messages() %}
                     {{ message}}
                 {% endfor %}
             </div>
             <div id="todo-list">
-                {% for list in lists %}
+
+                {% for item in items %}
                     <div class="todo-list">
-                        <label for="item{{list.id}}"><a href="/todo_lists/{{list.id}}"> {{list.list_name}}</a></label>
+                        <input id="item{{item.id}}" type="checkbox"></input>
+
+                        <label for="item{{item.id}}">{{item.task}}</label>
                     </div>
                 {% endfor %}
 
                 <form method="POST">
-                    <input type="text" name="todo_list_name"></input>
-                    <input type="submit" value="Create new list"></input>
+                    <input type="text" name="task"></input>
+                    <input type="submit" value="Create item list"></input>
                 </form>
 
             </div>

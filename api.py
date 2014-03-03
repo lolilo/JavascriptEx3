@@ -8,14 +8,16 @@ app = Flask(__name__)
 app.secret_key = "Shhhhh!! Something Secret"
 db = dataset.connect('sqlite:///database.db')
 
+# Assign vars for our database tables
+todo_item_table = db['todo_items']
+todo_lists = db['todo_lists']
+
 @app.route('/')
 def index():
-    todo_lists = db['todo_lists']
     return render_template('index.html', lists=todo_lists)
 
 @app.route('/', methods=['POST'])
 def index_post():
-    todo_lists = db['todo_lists']
     list_name = request.form.get('todo_list_name')
 
     if not list_name:
@@ -27,6 +29,19 @@ def index_post():
         flash('Todo list %s created' % list_name)
 
     return redirect('/')
+
+@app.route('/todo_lists/<int:id>')
+def todo_list_show(id):
+    items = todo_item_table.find(todo_list_id=id)
+    items = [x for x in items]
+
+    return render_template("todo_list.html", items=items)
+
+@app.route('/todo_lists/<int:id>', methods=["POST"])
+def todo_item_create(id):
+    resp = todo_item_table.insert(dict(task=request.form.get("task"), todo_list_id=id))    
+
+    return redirect("/todo_lists/%d" % id)
 
 # flask-restful api code
 api = restful.Api(app)
@@ -42,7 +57,10 @@ parser.add_argument('list_name', type=str)
 class TodoList(restful.Resource):
 
     def get(self,todo_list_id=None):
+        """
+            Handle showing either 1 list or all of the lists
 
+        """
         todo_lists = db['todo_lists']
 
         if todo_list_id:
@@ -51,10 +69,7 @@ class TodoList(restful.Resource):
         else:
             lists = todo_lists.all()
 
-            results = []
-            for row in lists:
-                results.append(row)
-
+            results = [row for row in lists] 
             return results
 
     def post(self):
@@ -79,16 +94,14 @@ class TodoItem(restful.Resource):
         if todo_item_id:
             return todo_item_table.find_one(id=todo_list_id)
         else:
-            results = []
-            for row in todo_item_table.all():
-                results.append(row)
-
+            items = todo_item_table.all()
+            results = [row for row in items]
             return results
 
     def post(self, todo_list_id):
         todo_item_table = db['todo_items']
 
-        resp = todo_item_table.insert(task=args['task'])
+        resp = todo_item_table.insert(task=args['task'], todo_list_id=todo_list_id)
         return resp
 
     def delete(self, todo_list_id, todo_item_id):
@@ -102,8 +115,8 @@ class TodoItem(restful.Resource):
 # These lines of code are how we register routes with flask-restful to their 
 # respective classes and functions
 # similar to @app.route('/') in regular flask
-api.add_resource(TodoList, '/todo_lists', '/todo_lists/<int:todo_list_id>')
-api.add_resource(TodoItem, '/todo_lists/<int:todo_list_id>/todo_items', '/todo_lists/<int:todo_list_id>/todo_items/<int:todo_item_id>')
+api.add_resource(TodoList, '/api/todo_lists', '/api/todo_lists/<int:todo_list_id>')
+api.add_resource(TodoItem, '/api/todo_lists/<int:todo_list_id>/todo_items', '/api/todo_lists/<int:todo_list_id>/todo_items/<int:todo_item_id>')
 
 
 if __name__ == '__main__':
