@@ -1,14 +1,35 @@
-#JS, the DOM, and AJAX
+# JS, the DOM, and AJAX
 
-## Getting Started
-By this point you've done this several times, but here are the steps you'll need to take to get setup.
+## External Links
+- https://api.jquery.com/jQuery.ajax/
 
-- clone this repo from github
-- create your virtualenv
-- install pip requirements
+Requires:
+- dom manipulation
 
+Covers:
+- AJAX w/ jQuery
+- serialization
+- JSON
+- Callbacks
+- REST
 
-Take a look at `api.py`. You'll notice there is some standard flask code.
+Bonuses:
+- cURl
+- Extending APIs
+- flask-restful
+
+## APIs! APIs! APIs!
+This exercise will deviate slightly from the regular workflow. We have provided the python backend code for you that your todo list app will be intergrating with. 
+
+## Getting Setup
+Next, bootstrap your environment by creating a python virtual environment and installing the required packages in requirements.txt. 
+
+## Let's Begin
+
+Start by opening `static/js/app.js` and `index.html`. These are the 2 main files that we'l be working from. Your html should go in `index.html` and your Javascript should go in `static/js/app.js`.
+
+Next, take a look at `api.py`. You'll notice there is some standard flask code up at the top.
+
 ````python
 
 @app.route('/')
@@ -17,20 +38,26 @@ def index():
 
 ````
 
-Below that code, are some classes / functions. We can ignore this code for now. All that you need to know for right now is that these classes are a different way of writing web code and are what handles your AJAX request.
+Below that flask code are some classes. All that you need to know to get started is that these classes are a different way of writing web code and will be handling your web requests.
 
-## APIs! APIs! APIs!
-This exercise will deviate slightly from the regular workflow. We have written the python backend code for you that your todo list app will be intergrating with. In the past we've typically have had 
+Even though we are mixing flask and flask-restful we can run the python app the same way we have run flask apps in the past, `python api.py`.  
 
-## The assignment
-- add support to make lists, lists can have many items
-- add a 
+Now that we have everything up and running, it's time to start builing our todo list.
+
+- Instead of doing a regular form submit and page refresh, create a todo list via an ajax post
+- Do the same as above with todo list items
+- add the ability to delete a list
 
 ## Extra Credit
-
+- remove all page refreshes (ie clicking on the todo list > list of items)
+- make the lists sortable(by id or alphabetically)
 - add support to reorder items in the todo list
-- add bootstrap
+- add bootstrap / styling
 
+
+### Notes on testing your api
+
+cURL is amazing
 
 
 
