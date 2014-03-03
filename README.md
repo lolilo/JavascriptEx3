@@ -4,14 +4,16 @@
 - https://api.jquery.com/jQuery.ajax/
 
 Requires:
+- Javascript
 - dom manipulation
+- jQuery
 
 Covers:
 - AJAX w/ jQuery
-- serialization
 - JSON
 - Callbacks
 - REST
+- serialization
 
 Bonuses:
 - cURl
