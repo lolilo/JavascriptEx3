@@ -1,0 +1,5 @@
+{% for list in lists %}
+    <div class="todo-list">
+        <label for="item{{list.id}}"><a href="/todo_lists/{{list.id}}"> {{list.list_name}}</a></label>
+    </div>
+{% endfor %}
