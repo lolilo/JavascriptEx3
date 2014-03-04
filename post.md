@@ -1,6 +1,6 @@
 ## Posting to the server
 
-Here is a sample ajax request to post data to a url.  Open the todo list ( http://localhost:5000 ) in chrome and copy the ajax code below into the Chrome console(you can access the console by right clicking anywhere on the page and selecting "Inspect Element"). It will fail but you can take a look at what happens in the Network tab of the Chrome inspector.
+Here is a sample ajax request to post data to a url.  Open the todo list ( http://localhost:5000 ) in Xhrome and copy the ajax code below into the Chrome console(you can access the console by right clicking anywhere on the page and selecting "Inspect Element"). It will fail but you can take a look at what happens in the Network tab of the Chrome inspector.
 
 ````javascript
 
@@ -30,9 +30,9 @@ Let's take a look at the form that has the data we're sending. It looks somethin
 </form>
 ````
 
-In order to submit this form to the server, we'll need to convert it to a key-value string. The keys will be the names of the form elements, with the values being the dom element's value. 
+In order to submit this form to the server, we'll need to convert it to a key-value string. The keys will be the names of the form elements, with the values being the dom element's value. Fortunately jQuery provides this function for us.
 
-To see this in action, type something in the list name input and run the following serialization code in the Chrome inspector console.
+To see this in action, type something in the list name input and run the following serialization fucntion in the Chrome inspector console.
 
 ````javascript
 $("form#todo_list_form").serialize();
