@@ -66,7 +66,7 @@ How would the code run without the done function? What if you left off the fail 
 
     var formSubmitButton = $("#form_submit");
 
-    form_submit_button.on("click", function(event){
+    formSubmitButton.on("click", function(event){
         e.preventDefault(); // prevent the browser form submission from happening
         $.ajax({
             url: "/",
