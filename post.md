@@ -59,6 +59,8 @@ Let's tie it all together now. Conceptually we want to tie in a button click, fo
 DON'T COPY AND PASTE, but write the following code in the document.ready function given to you in `static/js/app.js`. While you write the code, try and think about what it's doing and which callback function will get called before running the code and refreshing.
 
 
+How would the code run without the done function? What if you left off the fail callback?
+
 
 ```javascript
 
