@@ -39,12 +39,26 @@ $("form#todo_list_form").serialize();
 
 ````
 
-You'll see a response that looks exactly like a query string. This is all that is required for preparing the data to post to a server. Let's tie it all together now.
+You'll see a response that looks exactly like a query string. This is all that is required for preparing the data to post to a server. 
+
+
+Let's tie it all together now. Conceptually we want to tie in a button click, form serialization, and the ajax function.
+
+````javascript
+// on button click / form submission
+    // grab data from form
+    // send data to server
+        // if success
+            // update the page
+        // if fail
+            // warn the user
+
+````
+
 
 DON'T COPY AND PASTE, but write the following code in the document.ready function given to you in `static/js/app.js`. While you write the code, try and think about what it's doing and which callback function will get called before running the code and refreshing.
 
 
-** insert pseudo code here **
 
 ```javascript
 
