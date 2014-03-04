@@ -1,6 +1,6 @@
 ## Posting to the server
 
-Here is a sample ajax request to post data to a url.  Open the todo list app in chrome and copy the ajax code below into the Chrome console. It will fail but you can take a look at what happens in the Network tab of the Chrome inspector.
+Here is a sample ajax request to post data to a url.  Open the todo list app in chrome and copy the ajax code below into the Chrome console(you can access the console by right clicking anywhere on the page and selecting "Inspect Element"). It will fail but you can take a look at what happens in the Network tab of the Chrome inspector.
 
 ````javascript
 
