@@ -35,7 +35,7 @@ def todo_list_show(id):
 
 @app.route('/todo_lists/<int:id>', methods=["POST"])
 def todo_item_create(id):
-    resp = todo_item_table.insert(dict(task=request.form.get("task"), todo_list_id=id))    
+    resp = todo_item_table.insert(dict(task=request.form.get("task"), todo_list_id=id, done=False))    
 
     return redirect("/todo_lists/%d" % id)
 

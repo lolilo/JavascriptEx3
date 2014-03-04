@@ -12,30 +12,45 @@ Covers:
 
 
 ## Getting Setup
-Bootstrap your environment by creating a python virtual environment and installing the required packages in requirements.txt. 
+Clone this repo from Github. Once you have the code, you can bootstrap your environment by creating a python virtual environment and installing the required packages in requirements.txt. 
+
+````bash
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
+````
 
 ## Let's Begin
-Start by opening `static/js/app.js` and `index.html`. These are the 2 main files that we'l be working from. Your html should go in `index.html` and your Javascript should go in `static/js/app.js`.
 
-Now that we have everything up and running, it's time to start builing our todo list.
+Follow the walkthroughs in `post.md` and then `polling.md`. Once you finish those, the assignment is below.
 
-Instructions:
+Assignment:
 
-Building upon what you just did in `post.md`(NO COPY/PASTING):
+Building upon what you just did in `post.md`(NO COPY/PASTING) and without polling the server:
 
 Create Todo lists using $.ajax
 - Clicking the submit button should post a new todo list to the server.  
-- If it's successful, append the new todo item
+- add the new todo list to the end of the list using the done event
 
 Do the same thing for the todo items.
 - Clicking the submit button should post a new todo item to the server.  
-- If it's successful, append the new todo item
+- add the new todo item to the end of the list using the done event
 
-For these next two, you'll need to tie python into the mix.
-- Add the ability to delete a todo list, todo list item.
-- Add the ability to mark a todo item as done.
+Remove the page refresh that happens when clicking on a list name.
+- clicking on a list name should clear the list of lists and replace it with the list of todo items.
+- Add a button for the user to go back to the list of lists
 
-Finally, Remove all page refreshes (ie clicking on the todo list > list of items)
+For these next two, you'll need to write some python in addition to javascript.
+
+Add the ability to mark a todo item as done.
+- write a flask handler that accepts post requests
+- the route should be `/todo_lists/<int:list_id>/todo_item/<int:item_id>/done`
+- to handle the database update, you will find [https://dataset.readthedocs.org/en/latest/api.html#dataset.Table.update] to be helpful.
+
+Add the ability to delete todo lists and todo items.
+- write a flask handler that accepts post requests
+- the routes should be `/todo_lists/<int:list_id>/delete` and `/todo_lists/<int:list_id>/todo_item/<int:item_id>/delete` respectively. 
+- do handle the database delete, you will find [https://dataset.readthedocs.org/en/latest/api.html#dataset.Table.delete] helpful.
 
 
 Bonus:
