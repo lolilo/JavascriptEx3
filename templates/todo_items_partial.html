@@ -1,0 +1,7 @@
+{% for item in items %}
+    <div class="todo-list">
+        <input id="item{{item.id}}" type="checkbox"></input>
+
+        <label for="item{{item.id}}">{{item.task}}</label>
+    </div>
+{% endfor %}

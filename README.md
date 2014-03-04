@@ -45,12 +45,19 @@ For these next two, you'll need to write some python in addition to javascript.
 Add the ability to mark a todo item as done.
 - write a flask handler that accepts post requests
 - the route should be `/todo_lists/<int:list_id>/todo_item/<int:item_id>/done`
-- to handle the database update, you will find [https://dataset.readthedocs.org/en/latest/api.html#dataset.Table.update] to be helpful.
+- the flask handler should return the list of items rendered in `todo_items_partial.html`.
+
+to handle the database update, you will find https://dataset.readthedocs.org/en/latest/api.html#dataset.Table.update to be helpful.
 
 Add the ability to delete todo lists and todo items.
-- write a flask handler that accepts post requests
+- write two more flask handlers that accept post requests
 - the routes should be `/todo_lists/<int:list_id>/delete` and `/todo_lists/<int:list_id>/todo_item/<int:item_id>/delete` respectively. 
-- do handle the database delete, you will find [https://dataset.readthedocs.org/en/latest/api.html#dataset.Table.delete] helpful.
+- after deleting the list or item, the handler should the relevant rendered *_partial.html tempalte to the browser so it can update the page.
+
+To handle the database delete, you will find https://dataset.readthedocs.org/en/latest/api.html#dataset.Table.delete helpful.
+
+
+
 
 
 Bonus:
