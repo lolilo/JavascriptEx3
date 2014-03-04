@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 ## Let's Begin
 
-Follow the walkthroughs in `post.md` and then `polling.md`. Once you finish those, the assignment is below.
+Follow the walkthroughs in https://github.com/hackbrightacademy/Javascript3/blob/master/post.md and then https://github.com/hackbrightacademy/Javascript3/blob/master/polling.md. Once you finish those, the assignment is below.
 
 Assignment:
 
