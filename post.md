@@ -30,7 +30,7 @@ Let's take a look at the form that has the data we're sending. It looks somethin
 </form>
 ````
 
-In order to submit this form to the server, we'll need to convert it to a key-value string (like a query string with a get request). The keys will be the names of the form elements, with the values being the dom element's value. 
+In order to submit this form to the server, we'll need to convert it to a key-value string. The keys will be the names of the form elements, with the values being the dom element's value. 
 
 To see this in action, type something in the list name input and run the following serialization code in the Chrome inspector console.
 
