@@ -18,6 +18,7 @@ Clone this repo from Github. Once you have the code, you can bootstrap your envi
 virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
+python api.py
 ````
 
 ## Let's Begin
