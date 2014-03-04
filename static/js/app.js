@@ -1,14 +1,11 @@
 $(document).ready(function(){
 
-
-
-
 var formSubmitButton = $("#form_submit");
 
 formSubmitButton.on("click", function(event) {
     event.preventDefault(); // prevent the browser form submission from happening
     $.ajax({
-        url: "/",
+        url: "/ajax/todo_list",
         method: "POST",
         data: $("form#todo_list_form").serialize(),
     }).done(function(responseData){ // data here is not the same as data in .ajax
@@ -27,17 +24,14 @@ var getListsFromServer = function() {
         url: '/todo_lists/poll',
         method: "GET"
     }).done(function(data){
-        console.log(data);
+        var docBody = document.body;
+        // console.log(docBody);
+        docBody = data;
     });
 };
 
-
-
-
-            var assignedHouse = document.getElementById(houseName);
-            var assignedStudent = document.createElement('p');
-            assignedStudent.innerHTML = studentName;
-            console.log(assignedStudent);
-            assignedHouse.appendChild(assignedStudent);
-
 });
+
+
+
+// SELECT name FROM sqlite_master WHERE type = "table"

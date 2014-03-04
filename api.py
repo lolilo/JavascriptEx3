@@ -26,11 +26,11 @@ def index_post():
 
     return redirect('/')
 
+
 # handler for asynchronous request
 @app.route('/ajax/todo_list', methods=['POST'])
 def ajax_todo_list():
     return render_template('ajax_template', new_list=new_list)
-
 
 @app.route('/todo_lists/<int:id>')
 def todo_list_show(id):
